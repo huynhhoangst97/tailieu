@@ -1,0 +1,45 @@
+body{
+	margin-top: 100px;
+}
+.navbar-default{
+	background-color: #00E76D;
+	margin: 0;
+	border: none;
+}
+.navbar-nav>li{
+	padding-top: 5px;
+}
+.navbar-nav>li>a{
+	margin-top:10px;
+}
+#dropdown-menu-1{
+	background-color: #00E76D;
+}
+.navbar-default .navbar-nav .open .dropdown-menu>li>a{
+	color: white;
+}
+
+.clear{
+	overflow: auto;
+}
+.border-table{
+	border: 1px solid black;
+	margin:10px;
+	padding: 10px;
+}
+.table-striped>tbody>tr:nth-of-type(even){
+	background-color: #ECECEC;
+}
+.chart{
+	height: 500px;
+}
+#chart{
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+.navbar-default .navbar-nav>li>a:hover{
+	background-color: #88f193e0;
+}
+#bang{
+	margin-left: 10px;
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="js/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/layout-control.js"></script>
+	<script type="text/javascript" src="socket.io/socket.io.js"></script>
+	<script src="js/raphael.2.1.0.min.js"></script>
+	<script src="js/justgage.1.0.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+				 aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="/"><img alt="Brand" src="images/logo.png" style="width:70px"></a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-left">
+					<li class="active">
+						<p class="navbar-text" style="color:white;font-size: 20px;">SMARTGREEN IOT CONTROL SYSTEM</p>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="analysis" style="color:white; font-size:20px;margin-top:3px;">ANALYSIS</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<h3 style="margin:0;">Dashboard</h3>
+	</div>
+	<hr>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 border-table" style="background-color:#F5F5F5;">
+				<table class="table table-striped " id="tab1">
+					<h3>Climate Control</h3>
+					<tr class="fist-line">
+						<th>Name</th>
+						<th>Value</th>
+						<th>Min day</th>
+						<th>Max day</th>
+						<th>Min month</th>
+						<th>Max month</th>
+					</tr>
+					<tr>
+						<td>Environment Temperature</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+					</tr>
+					<tr>
+						<td>Environment Huminity</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+					</tr>
+					<tr>
+						<td>Light Intensity</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+					</tr>
+					<tr>
+						<td>CO2 Injection</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-md-6 border-table" style="background-color:#F5F5F5;">
+				<table class="table table-striped" id="tab2">
+					<h3>Irrigation control</h3>
+					<tr class="fist-line">
+						<th>Name</th>
+						<th>Value</th>
+						<th>Min day</th>
+						<th>Max day</th>
+						<th>Min month</th>
+						<th>Max month</th>
+					</tr>
+					<tr>
+						<td>PH</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+					</tr>
+					<tr>
+						<td>EC</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+					</tr>
+					<tr>
+						<td>Water Temperature</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+					</tr>
+					<tr>
+						<td>Oxygen Concentration In Water</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+						<td>null</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+
+	</div>
+	<hr>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4">
+				<div id="temp-chart" class="200x160px"></div>
+			</div>
+			<div class="col-md-4">
+				<table class="table">
+					<p class="today"></p>
+					<tr>
+						<td>Max</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Min</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Average</td>
+						<td></td>
+						<td>Today</td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-md-4">
+				<canvas id="chartTemp"></canvas>
+			</div>
+		</div>
+	</div>
+	<hr>
+
+	<div class="container" id="chart">
+		<div class="col-md-10 border-table" class="chart">
+			<h3>Climate Report</h3>
+			<canvas id="myChart1"></canvas>
+		</div>
+		<div class="col-md-10 border-table" class="chart">
+			<h3>Irrigation Report</h3>
+			<canvas id="myChart2"></canvas>
+		</div>
+	</div>
+	<script type="text/javascript" src="chart/chart.js"></script>
+	<script type="text/javascript" src="chart/gause-chart.js"></script>
+	<script type="text/javascript" src="js/temp.js"></script>
+</body>
+
+</html>
